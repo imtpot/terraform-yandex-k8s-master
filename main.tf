@@ -51,7 +51,7 @@ resource "yandex_kubernetes_cluster" "main" {
       content {
         region = var.location.region
         dynamic "location" {
-          for_each = var.location.zones != null ? [1] : []
+          for_each = var.location.zones != null ? var.location.zones : []
 
           content {
             zone = location.value
